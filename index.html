@@ -7,82 +7,71 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
-    <link rel="stylesheet" href="https://codepen.io/amancevice/pen/EQLboj.css?v=4">
+    <link rel="stylesheet" href="https://codepen.io/amancevice/pen/EQLboj.css?v=17">
 
     <title>Timer</title>
   </head>
   <body>
 
-    <!--
-    <h4 id="title" class="" data-text="A B S O L U T E&nbsp;&nbsp;&nbsp;D E B A T E W A V E _" style="font-weight: 100;">
+    <h5 id="title" class="glitch" data-text="A B S O L U T E&nbsp;&nbsp;&nbsp;D E B A T E W A V E _" style="font-weight: 100;">
       A B S O L U T E&nbsp;&nbsp;&nbsp;D E B A T E W A V E _
-    </h4>
-    -->
+    </h5>
 
     <div class="container">
-      <div class="row" style="margin-top: 32px;">
-      </div>
-      <div id="timer" class="" data-text="00:00" style="font-size: 12em; text-align: center;">
-        00:00
-      </div>
-      <div class="container">
-        <div class="row">
-          <!-- Left spacers -->
-          <div class="col-sm"></div>
-          <div class="col-sm"></div>
-          <div class="col-sm"></div>
-
-          <!-- Text input -->
-          <div class="col-sm">
-            <input id="time-input" class="form-control form-control-lg" type="text" placeholder="0m" style="background-color: #000; color: #FFF; border: none;">
-          </div>
-
-          <!-- Buttons -->
-          <div class="col-sm">
-            <button id="start-btn" type="button" class="btn btn-secondary">
-              <i class="fas fa-play"></i>&nbsp;start
-            </button>
-            <button id="pause-btn" type="button" class="btn btn-primary">
-              <i class="fas fa-pause"></i>&nbsp;pause
-            </button>
-          </div>
-          <div class="col-sm">
-            <button id="reset-btn" type="button" class="btn btn-dark" type="reset">
-              <i class="fas fa-undo-alt"></i>&nbsp;reset
-            </button>
-          </div>
-
-          <!-- Right spacers -->
-          <div class="col-sm"></div>
-          <div class="col-sm"></div>
-          <div class="col-sm"></div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <h1 id="timer" class="glitch" data-text="00:00" style="font-size: 12em; font-weight: 300; margin-top: 128px">
+            00:00
+          </h1>
         </div>
+        <div class="col"></div>
       </div>
+      <div class="row">
+        <!-- Left spacers -->
+        <div class="col-sm"></div>
+        <div class="col-sm"></div>
+        <div class="col-sm"></div>
 
-      <!-- Progress bar -->
-      <!-- <div class="progress" style="height: 32px;">
-        <div class="progress-bar w-75 bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-      </div> -->
+        <!-- Text input -->
+        <div class="col-sm">
+          <input id="time-input" class="form-control form-control-lg" type="text" placeholder="0m" style="background-color: #000; color: #FFF; border: none;">
+        </div>
 
-      <!-- S T O P -->
-      <div id="stopModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content bg-danger">
-            <div class="modal-body" style="height: 256px; text-align: center">
-              <div class="outer">
-                <div class="middle">
-                  <div class="inner">
-                    <h1 class="modal-title" id="stopModalLabel">
-                      S T O P
-                    </h5>
-                    <!--
-                    <br/>
-                    <div class="" data-text="C A P I T A L I $ M">
-                      C A P I T A L I $ M
-                    </div>
-                    -->
-                  </div>
+        <!-- Buttons -->
+        <div class="col-sm">
+          <button id="start-btn" type="button" class="btn btn-secondary">
+            <i class="fas fa-play"></i>&nbsp;start
+          </button>
+          <button id="pause-btn" type="button" class="btn btn-primary">
+            <i class="fas fa-pause"></i>&nbsp;pause
+          </button>
+        </div>
+        <div class="col-sm">
+          <button id="reset-btn" type="button" class="btn btn-dark" type="reset">
+            <i class="fas fa-undo-alt"></i>&nbsp;reset
+          </button>
+        </div>
+
+        <!-- Right spacers -->
+        <div class="col-sm"></div>
+        <div class="col-sm"></div>
+        <div class="col-sm"></div>
+      </div>
+    </div>
+
+    <!-- S T O P -->
+    <div id="stopModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-danger">
+          <div class="modal-body" style="height: 256px">
+            <div class="outer" style="height: 256px">
+              <div class="middle">
+                <div class="inner">
+                  <h1 class="text-center" style="font-size: 4em; text-shadow: -2px 0 #FF5522;">S T O P</h1>
+                  <h6 class="text-center" style="text-shadow: -2px 0 #FF5522; font-weight: 100;">
+                    <del>&nbsp;&nbsp;C A P I T A L I $ M&nbsp;&nbsp;</del>
+                  </h6>
                 </div>
               </div>
             </div>
@@ -106,12 +95,14 @@
         var time_input = $('#time-input').val();
         var time_remaining = $('#timer').data('seconds');
 
+        $('#timer').removeClass('glitch');
         $('#timer').timer('remove');
         $('#timer').timer({
             countdown: true,
             duration: time_remaining || time_input,
             format: '%M:%S',
             callback: function() {
+              $('#timer').addClass('glitch');
               $('#timer').timer('pause');
               $('#stopModal').modal('show');
               $('#pause-btn').hide();
@@ -121,8 +112,6 @@
 
         $('#start-btn').hide();
         $('#pause-btn').show();
-
-        //$('#title').addClass('glitch')
       });
 
       // Pause
@@ -130,8 +119,6 @@
         $('#timer').timer('pause');
         $('#pause-btn').hide();
         $('#start-btn').show();
-
-        //$('#title').removeClass('glitch')
       });
 
       // Reset
@@ -144,8 +131,6 @@
         $('#timer').timer('pause');
         $('#pause-btn').hide();
         $('#start-btn').show();
-
-        //$('#title').removeClass('glitch')
       });
 
       // Text input
