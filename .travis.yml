@@ -11,3 +11,4 @@ deploy:
   acl: public_read
   on:
     repo: amancevice/timer
+    tags: true
