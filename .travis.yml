@@ -1,0 +1,11 @@
+language: javascript
+deploy:
+  provider: s3
+  access_key_id: AKIAIKGPBWQ57O3HYL7Q
+  secret_access_key:
+    secure: gnzR7F4SlJBeayfMCO4d8iuGuTmjo8m22x74VZ+fCpnw/xkS1tVLuCHl+yJdNx7l6Qhm9ge2AkaUDg+H5nyG9ppiMUCvIBnwn0n02Tc7aT+6J3KkkEEnPRMCdqbUWnkqenichkc5JV4RXj1n/nk+Ga5qMAhkUlTsf49PDP/enKZIYypImff+28W9cLDrUFQ74InPKiGbdZv4WTRn0QR/ZmgnmpAH17s3ju4mqLyNZKLigHncbkG0XIbF7RS40tQF76j9mnaFumN91XEkgjwzQd423Ne4kfdGyw6aPiTh33hAIhyTjUzhVfSeBgkxyodjGUauGygE5WiLHQ99dqqzKERjDFSpjy5V1DvOpO065gMpn4CSViP6S4bPGpSyFSMpNl3eYtn4aMf9sQ9SuV8o8iCZsCCfGstM87eLnzFkSGhqN59P+hG0/dP33MoqIGQ053xk738WI0wM0qzv2Z/VHU2HvEMLN1aIm4HASeQFPCR+JM3pSIT0e8kW0Fgqm2LaXdFJv3VdFdVYj9JY3khBYPay8q7Z9n5joQvCbSKrtIkpTODT86jqNt/IYHTpVHIGNJIBBFiGfds+ODbMvf35oTOJBpgehfc/+kjLvQoKh6cDAyHFL9nf4z2aVaYYR3WMY9MS0C5rhStWhwuDu1Q/cJm3JZ3XtZYns4L8wjt0pSs=
+  bucket: smallweirdnumber-public
+  upload-dir: boston-dsa/debate-timer
+  acl: public_read
+  on:
+    repo: amancevice/timer
