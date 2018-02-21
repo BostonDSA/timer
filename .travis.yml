@@ -1,4 +1,6 @@
 language: javascript
+script:
+- echo "no op"
 deploy:
   provider: s3
   access_key_id: AKIAIKGPBWQ57O3HYL7Q
