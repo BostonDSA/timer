@@ -7,39 +7,90 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://codepen.io/amancevice/pen/EQLboj.css?v=17">
 
-    <title>Timer</title>
+    <!-- Typeface -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400">
+
+    <!-- Glitch -->
+    <link rel="stylesheet" href="https://codepen.io/amancevice/pen/gvKZmK.css?v=7">
+
+    <!-- Custom styles -->
+    <style>
+
+      html,body {
+        background-color: #111;
+        background: linear-gradient(
+          rgba(0, 0, 0, 0.6),
+          rgba(0, 0, 0, 0.6) ),
+          url("http://orig04.deviantart.net/d0ce/f/2011/263/f/e/grid_pink_by_leafeniel-d4afuhm.jpg");
+        color: #FFF;
+        font-family: 'Roboto Mono';
+      }
+
+      #title {
+        font-weight: 100;
+        font-size: 22px;
+      }
+
+      #timer {
+        font-size: 28em;
+        font-weight: 300;
+        text-shadow: -1px -1px #1000FF;
+        width: 100%;
+        //margin-top: 128px
+      }
+
+      #time-input {
+         background-color: #111;
+         color: #FFF;
+         border: none;
+         width: 100px;
+      }
+
+      .modal {
+        text-shadow: -2px -2px #FF5522;
+      }
+
+      #stop {
+        font-size: 8em;
+      }
+
+      #capitalism {
+        font-size: 1.5em;
+        font-weight: 100;
+      }
+
+      button {
+        width: 100px;
+      }
+    </style>
+
+    <title>D E B A T E W A V E _</title>
   </head>
+
   <body>
 
-    <h5 id="title" class="glitch" data-text="A B S O L U T E&nbsp;&nbsp;&nbsp;D E B A T E W A V E _" style="font-weight: 100;">
-      A B S O L U T E&nbsp;&nbsp;&nbsp;D E B A T E W A V E _
-    </h5>
+    <div id="title" class="glitch" data-text="A B S O L U T E&nbsp;&nbsp;&nbsp;&nbsp;D E B A T E W A V E _">
+      A B S O L U T E&nbsp;&nbsp;&nbsp;&nbsp;D E B A T E W A V E _
+    </div>
+
+    <div id="glitch-timer" hidden=true></div>
+    <div id="timer" class="text-center" data-text="00:00">
+      00:00
+    </div>
 
     <div class="container">
       <div class="row">
-        <div class="col"></div>
-        <div class="col">
-          <h1 id="timer" class="glitch" data-text="00:00" style="font-size: 12em; font-weight: 300; margin-top: 128px">
-            00:00
-          </h1>
-        </div>
-        <div class="col"></div>
-      </div>
-      <div class="row">
-        <!-- Left spacers -->
-        <div class="col-sm"></div>
-        <div class="col-sm"></div>
-        <div class="col-sm"></div>
+        <!-- Left spacer -->
+        <div class="col-sm-2"></div>
 
         <!-- Text input -->
-        <div class="col-sm">
-          <input id="time-input" class="form-control form-control-lg" type="text" placeholder="0m" style="background-color: #000; color: #FFF; border: none;">
+        <div class="col-2">
+          <input id="time-input" class="form-control form-control-lg" type="text" placeholder="0m">
         </div>
 
         <!-- Buttons -->
-        <div class="col-sm">
+        <div class="col-2">
           <button id="start-btn" type="button" class="btn btn-secondary">
             <i class="fas fa-play"></i>&nbsp;start
           </button>
@@ -47,41 +98,47 @@
             <i class="fas fa-pause"></i>&nbsp;pause
           </button>
         </div>
-        <div class="col-sm">
-          <button id="reset-btn" type="button" class="btn btn-dark" type="reset">
+        <div class="col-2">
+          <button id="reset-btn" type="button" class="btn btn-dark">
             <i class="fas fa-undo-alt"></i>&nbsp;reset
           </button>
         </div>
+        <div class="col-2">
+          <button id="clear-btn" type="button" class="btn btn-dark">
+            <i class="fas fa-times"></i>&nbsp;clear
+          </button>
+        </div>
 
-        <!-- Right spacers -->
-        <div class="col-sm"></div>
-        <div class="col-sm"></div>
-        <div class="col-sm"></div>
+        <!-- Right spacer -->
+        <div class="col-sm-2"></div>
       </div>
     </div>
 
     <!-- S T O P -->
-    <div id="stopModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+    <div id="stopModal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content bg-danger">
-          <div class="modal-body" style="height: 256px">
-            <div class="outer" style="height: 256px">
-              <div class="middle">
-                <div class="inner">
-                  <h1 class="text-center" style="font-size: 4em; text-shadow: -2px 0 #FF5522;">S T O P</h1>
-                  <h6 class="text-center" style="text-shadow: -2px 0 #FF5522; font-weight: 100;">
-                    <del>&nbsp;&nbsp;C A P I T A L I $ M&nbsp;&nbsp;</del>
-                  </h6>
+          <div class="modal-body text-center" style="height: 512px">
+              <div class="row align-items-center" style="height: 90%;">
+                <div class="col">
+                  <div id="stop" class="" data-text="S T O P">
+                    S T O P
+                  </div>
                 </div>
               </div>
-            </div>
+              <div class="row">
+                <div class="col">
+                  <div id="capitalism" class="glitch" data-text="C A P I T A L I $ M">
+                    C A P I T A L I $ M
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -95,14 +152,14 @@
         var time_input = $('#time-input').val();
         var time_remaining = $('#timer').data('seconds');
 
-        $('#timer').removeClass('glitch');
+        //$('#timer').removeClass('glitch');
         $('#timer').timer('remove');
         $('#timer').timer({
             countdown: true,
             duration: time_remaining || time_input,
             format: '%M:%S',
             callback: function() {
-              $('#timer').addClass('glitch');
+              //$('#timer').addClass('glitch');
               $('#timer').timer('pause');
               $('#stopModal').modal('show');
               $('#pause-btn').hide();
@@ -123,6 +180,16 @@
 
       // Reset
       $('#reset-btn').on('click', function() {
+        $('#timer').timer('reset');
+        $('#timer').timer('pause');
+        $('#pause-btn').hide();
+        $('#start-btn').show();
+      });
+
+      // Clear
+      $('#clear-btn').on('click', function() {
+        $("#time-input").val('');
+        //$('#timer').addClass('glitch');
         $('#timer').timer('remove');
         $('#timer').timer({
             duration: '0s',
@@ -133,10 +200,25 @@
         $('#start-btn').show();
       });
 
-      // Text input
-      $('#inputDatabaseName').on('input',function(e){
-          alert('Changed!')
+      // Glitch current time
+      /*
+      $('#glitch-timer').timer({
+          duration: '10ms',
+          repeat: true,
+          callback: function() {
+            var totalSeconds = $('#timer').data('seconds') || 0;
+            var minutes = totalSeconds / 60 | 0;
+            if (minutes < 10) {
+              minutes = "0" + minutes;
+            }
+            var seconds = totalSeconds % 60;
+            if (seconds < 10) {
+              seconds = "0" + seconds;
+            }
+            $('#timer').attr('data-text', minutes + ":" + seconds);
+          }
       });
+      */
     </script>
   </body>
 </html>
